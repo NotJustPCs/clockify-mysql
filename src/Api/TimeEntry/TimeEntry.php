@@ -154,26 +154,27 @@ class TimeEntry
 
     public function storeWorkspaceProjectTimeEntryTagIds($workspaceId, $userId, $projectId, $timeEntryId, $tagIds)
     {
-        foreach ($tagIds as $tagId) {
-            if (isset($tagId)) {
-                $data['workspaceId'] = $workspaceId;
-                $data['userId'] = $userId;
-                $data['projectId'] = $projectId;
-                $data['timeEntryId'] = $timeEntryId;
-                $data['tagId'] = $tagId;
-                DB::table('clockify_time_entry_tags')->insert($data);
+        if (isset($tagIds)) {
+            foreach ($tagIds as $tagId) {
+                if (isset($tagId)) {
+                    $data['workspaceId'] = $workspaceId;
+                    $data['userId'] = $userId;
+                    $data['projectId'] = $projectId;
+                    $data['timeEntryId'] = $timeEntryId;
+                    $data['tagId'] = $tagId;
+                    DB::table('clockify_time_entry_tags')->insert($data);
+                }
             }
         }
     }
     public function storeWorkspaceProjectTimeEntryInterval($workspaceId, $userId, $projectId, $timeEntryId, $timeInterval)
     {
-        if (isset($tagId)) {
+        if (isset($timeInterval)) {
             $timeInterval['workspaceId'] = $workspaceId;
             $timeInterval['userId'] = $userId;
             $timeInterval['projectId'] = $projectId;
             $timeInterval['timeEntryId'] = $timeEntryId;
-            $timeInterval['tagId'] = $tagId;
-            DB::table('clockify_time_entry_tags')->insert($timeInterval);
+            DB::table('clockify_time_entry_intervals')->insert($timeInterval);
         }
     }
 

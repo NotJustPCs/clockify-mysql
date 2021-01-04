@@ -1,3 +1,6 @@
-*.log
-config.ini
-error_log
+/vendor
+/.php_cs.cache
+/.phpunit.result.cache
+/composer.lock
+/.idea
+/.vscode
