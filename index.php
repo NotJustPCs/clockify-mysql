@@ -12,7 +12,7 @@ $builder = new ClientBuilder();
 $client = $builder->createClientV1($config['api_key']);
 //Run migrations
 Migrations::execute();
-
+$params['page-size'] = 100000000;
 $apiFactory = new ApiFactory($client);
 $workspaceApi = $apiFactory->workspaceApi();
 $workspacesIds = $workspaceApi->workspaces();
@@ -23,7 +23,7 @@ foreach ($workspacesIds as $workspacesId) {
     //projects
     $projectIds = [];
     $projectApi = $apiFactory->projectApi();
-    $projectIds = $projectApi->projects($workspacesId);
+    $projectIds = $projectApi->projects($workspacesId, $params);
     //workspace users
     $userApi = $apiFactory->userApi();
     $userIds = $userApi->workspaceUsers($workspacesId);
@@ -31,13 +31,14 @@ foreach ($workspacesIds as $workspacesId) {
     $taskIds = [];
     $taskApi = $apiFactory->taskApi();
     foreach ($projectIds as $projectId) {
-        $taskIds = $taskApi->tasks($workspacesId, $projectId);
-    }
-    //Time entries
-    $timeEntryIds = [];
-    $timeEntryApi = $apiFactory->timeEntryApi();
-    foreach ($userIds as $userId) {
-        $timeEntryIds = $timeEntryApi->find($workspacesId, $userId);
+        $taskIds = $taskApi->tasks($workspacesId, $projectId, $params);
+        //Time entries
+        $timeEntryIds = [];
+        $timeEntryApi = $apiFactory->timeEntryApi();
+        foreach ($userIds as $userId) {
+            $params['project'] = $projectId;
+            $timeEntryIds = $timeEntryApi->find($workspacesId, $userId, $params);
+        }
     }
 }
 echo 'Data has been fetched successfully';
