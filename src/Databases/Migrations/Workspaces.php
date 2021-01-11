@@ -13,6 +13,7 @@ class Workspaces
      */
     public static function up()
     {
+      echo $config['db_engine'];
         DB::schema()->dropIfExists('clockify_workspaces');
 
         DB::schema()->create('clockify_workspaces', function ($table) {
