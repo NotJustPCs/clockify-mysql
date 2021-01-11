@@ -16,6 +16,7 @@ class Workspaces
         DB::schema()->dropIfExists('clockify_workspaces');
 
         DB::schema()->create('clockify_workspaces', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('id', 255)->primary();
             $table->string('name', 255)->nullable();
             $table->string('imageUrl', 255)->nullable();

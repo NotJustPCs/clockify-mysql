@@ -17,6 +17,7 @@ class WorkspaceUsers
         DB::schema()->dropIfExists('clockify_workspace_users');
 
         DB::schema()->create('clockify_workspace_users', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('id', 255);
             $table->string('workspaceId', 255)->nullable();
             $table->string('email', 255)->nullable();

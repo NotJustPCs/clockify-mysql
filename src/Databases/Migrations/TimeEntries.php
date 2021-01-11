@@ -17,6 +17,7 @@ class TimeEntries
         DB::schema()->dropIfExists('clockify_time_entries');
 
         DB::schema()->create('clockify_time_entries', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('id', 255)->primary();
             $table->string('description', 255)->nullable();
             $table->string('userId', 255)->nullable();

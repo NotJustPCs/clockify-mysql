@@ -17,6 +17,7 @@ class ProjectTimeEstimates
         DB::schema()->dropIfExists('clockify_project_time_estimates');
 
         DB::schema()->create('clockify_project_time_estimates', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('projectId', 255)->nullable();
             $table->string('estimate', 255)->nullable();
             $table->string('type', 255)->nullable();

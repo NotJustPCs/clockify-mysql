@@ -17,6 +17,7 @@ class WorkspaceAdminOnlyPages
         DB::schema()->dropIfExists('clockify_workspace_admin_only_pages');
 
         DB::schema()->create('clockify_workspace_admin_only_pages', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('workspaceId', 255);
             $table->string('adminOnlyPages', 255)->nullable();
         });

@@ -17,6 +17,7 @@ class Tasks
         DB::schema()->dropIfExists('clockify_tasks');
 
         DB::schema()->create('clockify_tasks', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('id', 255)->primary();
             $table->string('name', 255)->nullable();
             $table->string('projectId', 255)->nullable();

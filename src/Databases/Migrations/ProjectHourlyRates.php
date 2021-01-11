@@ -17,6 +17,7 @@ class ProjectHourlyRates
         DB::schema()->dropIfExists('clockify_project_hourly_rates');
 
         DB::schema()->create('clockify_project_hourly_rates', function ($table) {
+            $table->engine = $config['db_engine'];
             $table->string('projectId', 255);
             $table->integer('amount')->nullable();
             $table->string('currency', 255)->nullable();
