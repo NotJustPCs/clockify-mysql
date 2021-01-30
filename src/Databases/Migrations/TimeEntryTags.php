@@ -14,10 +14,9 @@ class TimeEntryTags
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_time_entry_tags');
+        DB::schema()->dropIfExists('time_entry_tags');
 
-        DB::schema()->create('clockify_time_entry_tags', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('time_entry_tags', function ($table) {
             $table->string('workspaceId', 255);
             $table->string('userId', 255)->nullable();
             $table->string('projectId', 255)->nullable();

@@ -14,10 +14,9 @@ class Tasks
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_tasks');
+        DB::schema()->dropIfExists('tasks');
 
-        DB::schema()->create('clockify_tasks', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('tasks', function ($table) {
             $table->string('id', 255)->primary();
             $table->string('name', 255)->nullable();
             $table->string('projectId', 255)->nullable();

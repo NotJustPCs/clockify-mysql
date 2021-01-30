@@ -162,7 +162,7 @@ class TimeEntry
                     $data['projectId'] = $projectId;
                     $data['timeEntryId'] = $timeEntryId;
                     $data['tagId'] = $tagId;
-                    DB::table('clockify_time_entry_tags')->insert($data);
+                    DB::table('time_entry_tags')->insert($data);
                 }
             }
         }
@@ -174,14 +174,14 @@ class TimeEntry
             $timeInterval['userId'] = $userId;
             $timeInterval['projectId'] = $projectId;
             $timeInterval['timeEntryId'] = $timeEntryId;
-            DB::table('clockify_time_entry_intervals')->insert($timeInterval);
+            DB::table('time_entry_intervals')->insert($timeInterval);
         }
     }
 
     public function storeWorkspaceProjectTimeEntry($workspaceProjectTimeEntry)
     {
         if (isset($workspaceProjectTimeEntry)) {
-            DB::table('clockify_time_entries')->insert($workspaceProjectTimeEntry);
+            DB::table('time_entries')->insert($workspaceProjectTimeEntry);
         }
     }
 }

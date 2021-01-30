@@ -14,10 +14,9 @@ class WorkspaceSettings
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_settings');
+        DB::schema()->dropIfExists('workspace_settings');
 
-        DB::schema()->create('clockify_workspace_settings', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_settings', function ($table) {
             $table->string('workspaceId', 255);
             $table->boolean('timeRoundingInReports')->nullable();
             $table->boolean('onlyAdminsSeeBillableRates')->nullable();

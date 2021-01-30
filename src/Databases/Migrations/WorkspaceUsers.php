@@ -14,10 +14,9 @@ class WorkspaceUsers
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_users');
+        DB::schema()->dropIfExists('workspace_users');
 
-        DB::schema()->create('clockify_workspace_users', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_users', function ($table) {
             $table->string('id', 255);
             $table->string('workspaceId', 255)->nullable();
             $table->string('email', 255)->nullable();

@@ -60,7 +60,7 @@ class User
                 $membershipHourlyRate = $membership['hourlyRate'];
                 unset($membership['hourlyRate']);
                 $this->storeMemberShipHourlyRate($workspaceId, $membership['userId'], $membershipHourlyRate);
-                DB::table('clockify_workspace_user_memberships')->insert($membership);
+                DB::table('workspace_user_memberships')->insert($membership);
             }
         }
     }
@@ -69,7 +69,7 @@ class User
         if (isset($membershipHourlyRate)) {
             $membershipHourlyRate['workspaceId'] = $workspaceId;
             $membershipHourlyRate['userId'] = $userId;
-            DB::table('clockify_workspace_user_membership_hourly_rates')->insert($membershipHourlyRate);
+            DB::table('workspace_user_membership_hourly_rates')->insert($membershipHourlyRate);
         }
     }
 
@@ -83,7 +83,7 @@ class User
             //
             $workspaceSettings['workspaceId'] = $workSpaceId;
             $workspaceSettings['userId'] = $userId;
-            DB::table('clockify_workspace_user_settings')->insert($workspaceSettings);
+            DB::table('workspace_user_settings')->insert($workspaceSettings);
         }
     }
 
@@ -92,7 +92,7 @@ class User
         if (isset($workspaceUserSummaryReportSettings)) {
             $workspaceUserSummaryReportSettings['workspaceId'] = $workSpaceId;
             $workspaceUserSummaryReportSettings['userId'] = $userId;
-            DB::table('clockify_workspace_user_setting_summary_report_settings')->insert($workspaceUserSummaryReportSettings);
+            DB::table('workspace_user_setting_summary_report_settings')->insert($workspaceUserSummaryReportSettings);
         }
     }
 
@@ -100,7 +100,7 @@ class User
     {
         if (isset($workspaceUser)) {
             $workspaceUser['workspaceId'] = $workSpaceId;
-            DB::table('clockify_workspace_users')->insert($workspaceUser);
+            DB::table('workspace_users')->insert($workspaceUser);
         }
     }
 }

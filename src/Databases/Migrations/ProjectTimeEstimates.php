@@ -14,10 +14,9 @@ class ProjectTimeEstimates
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_project_time_estimates');
+        DB::schema()->dropIfExists('project_time_estimates');
 
-        DB::schema()->create('clockify_project_time_estimates', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('project_time_estimates', function ($table) {
             $table->string('projectId', 255)->nullable();
             $table->string('estimate', 255)->nullable();
             $table->string('type', 255)->nullable();

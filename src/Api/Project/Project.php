@@ -56,6 +56,10 @@ class Project
             $timeEstimate = $project['timeEstimate'];
             unset($project['timeEstimate']);
             $this->storeTimeEstimate($project['id'], $timeEstimate);
+            //Store project cost rate
+            $costRate = $project['costRate'];
+            unset($project['costRate']);
+            $this->storeCostRate($project['id'], $costRate);
             //Store project
             $this->storeProject($project);
         }
@@ -82,7 +86,7 @@ class Project
     {
         if (isset($hourlyRate)) {
             $hourlyRate['projectId'] = $projectId;
-            DB::table('clockify_project_hourly_rates')->insert($hourlyRate);
+            DB::table('project_hourly_rates')->insert($hourlyRate);
         }
     }
 
@@ -99,7 +103,7 @@ class Project
                 $membershipHourlyRate = $membership['hourlyRate'];
                 unset($membership['hourlyRate']);
                 $this->storeMemberShipHourlyRate($projectId, $membership['userId'], $membershipHourlyRate);
-                DB::table('clockify_project_memberships')->insert($membership);
+                DB::table('project_memberships')->insert($membership);
             }
         }
     }
@@ -114,7 +118,7 @@ class Project
         if (isset($membershipHourlyRate)) {
             $membershipHourlyRate['projectId'] = $projectId;
             $membershipHourlyRate['userId'] = $userId;
-            DB::table('clockify_project_membership_hourly_rates')->insert($membershipHourlyRate);
+            DB::table('project_membership_hourly_rates')->insert($membershipHourlyRate);
         }
     }
 
@@ -126,7 +130,7 @@ class Project
     {
         if (isset($estimate)) {
             $estimate['projectId'] = $projectId;
-            DB::table('clockify_project_estimates')->insert($estimate);
+            DB::table('project_estimates')->insert($estimate);
         }
     }
 
@@ -138,7 +142,19 @@ class Project
     {
         if (isset($timeEstimate)) {
             $timeEstimate['projectId'] = $projectId;
-            DB::table('clockify_project_time_estimates')->insert($timeEstimate);
+            DB::table('project_time_estimates')->insert($timeEstimate);
+        }
+    }
+
+    /**
+     * @param $projectId
+     * @param $timeEstimate
+     */
+    public function storeCostRate($projectId, $costRate)
+    {
+        if (isset($costRate)) {
+            $costRate['projectId'] = $projectId;
+            DB::table('project_cost_rate')->insert($costRate);
         }
     }
 
@@ -148,7 +164,7 @@ class Project
     public function storeProject($project)
     {
         if (isset($project)) {
-            DB::table('clockify_projects')->insert($project);
+            DB::table('projects')->insert($project);
         }
     }
 }

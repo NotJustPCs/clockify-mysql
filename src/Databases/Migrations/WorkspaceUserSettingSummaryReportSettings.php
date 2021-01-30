@@ -14,9 +14,8 @@ class WorkspaceUserSettingSummaryReportSettings
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_user_setting_summary_report_settings');
-        DB::schema()->create('clockify_workspace_user_setting_summary_report_settings', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->dropIfExists('workspace_user_setting_summary_report_settings');
+        DB::schema()->create('workspace_user_setting_summary_report_settings', function ($table) {
             $table->string('userId', 255);
             $table->string('workspaceId', 255)->nullable();
             $table->string('group', 255)->nullable();

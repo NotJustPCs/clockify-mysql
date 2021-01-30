@@ -14,10 +14,9 @@ class WorkspaceHourlyRates
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_hourly_rates');
+        DB::schema()->dropIfExists('workspace_hourly_rates');
 
-        DB::schema()->create('clockify_workspace_hourly_rates', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_hourly_rates', function ($table) {
             $table->string('workspaceId', 255);
             $table->integer('amount')->nullable();
             $table->string('currency', 255)->nullable();

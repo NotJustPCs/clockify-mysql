@@ -47,7 +47,7 @@ class Task
             //Store user memberships
             $assigneeIds = $workspaceProjectTask['assigneeIds'];
             unset($workspaceProjectTask['assigneeIds']);
-            $this->storeWorkspaceProjectTaskAssigneeIds($workspaceId, $projectId, $assigneeIds);
+            $this->storeWorkspaceProjectTaskAssigneeIds($workspaceProjectTask['id'], $assigneeIds);
             //Store project
             $this->storeWorkspaceProjectTasks($workspaceId, $projectId, $workspaceProjectTask);
         }
@@ -61,11 +61,11 @@ class Task
         return TaskDto::fromArray($data);
     }
 
-    public function storeWorkspaceProjectTaskAssigneeIds($workspaceId, $projectId, $assigneeIds)
+    public function storeWorkspaceProjectTaskAssigneeIds($taskId, $assigneeIds)
     {
         foreach ($assigneeIds as $assigneeId) {
             if (isset($assigneeId)) {
-                DB::table('clockify_task_assignees')->insert(['workspaceId' => $workspaceId, 'projectId' => $projectId, 'assigneeId' => $assigneeId]);
+                DB::table('task_assignees')->insert(['taskId' => $taskId, 'assigneeId' => $assigneeId]);
             }
         }
     }
@@ -75,7 +75,7 @@ class Task
         if (isset($workspaceProjectTask)) {
             $workspaceProjectTask['workspaceId'] = $workspaceId;
             $workspaceProjectTask['projectId'] = $projectId;
-            DB::table('clockify_tasks')->insert($workspaceProjectTask);
+            DB::table('tasks')->insert($workspaceProjectTask);
         }
     }
 }

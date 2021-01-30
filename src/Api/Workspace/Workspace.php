@@ -62,7 +62,7 @@ class Workspace
     {
         if (isset($hourlyRate)) {
             $hourlyRate['workspaceId'] = $workSpaceId;
-            DB::table('clockify_workspace_hourly_rates')->insert($hourlyRate);
+            DB::table('workspace_hourly_rates')->insert($hourlyRate);
         }
     }
 
@@ -79,7 +79,7 @@ class Workspace
                 $membershipHourlyRate = $membership['hourlyRate'];
                 unset($membership['hourlyRate']);
                 $this->storeMemberShipHourlyRate($workSpaceId, $membership['userId'], $membershipHourlyRate);
-                DB::table('clockify_workspace_memberships')->insert($membership);
+                DB::table('workspace_memberships')->insert($membership);
             }
         }
     }
@@ -94,7 +94,7 @@ class Workspace
         if (isset($membershipHourlyRate)) {
             $membershipHourlyRate['workspaceId'] = $workSpaceId;
             $membershipHourlyRate['userId'] = $userId;
-            DB::table('clockify_workspace_membership_hourly_rates')->insert($membershipHourlyRate);
+            DB::table('workspace_membership_hourly_rates')->insert($membershipHourlyRate);
         }
     }
 
@@ -114,7 +114,7 @@ class Workspace
             unset($workspaceSettings['adminOnlyPages']);
             $this->storeWorkspaceSettingsAdminOnlyPages($workSpaceId, $workspaceSettingsAdminOnlyPages);
             //
-            DB::table('clockify_workspace_settings')->insert($workspaceSettings);
+            DB::table('workspace_settings')->insert($workspaceSettings);
         }
     }
 
@@ -126,7 +126,7 @@ class Workspace
     {
         if (isset($workspaceSettingsRound)) {
             $workspaceSettingsRound['workspaceId'] = $workSpaceId;
-            DB::table('clockify_workspace_settings_rounds')->insert($workspaceSettingsRound);
+            DB::table('workspace_settings_rounds')->insert($workspaceSettingsRound);
         }
     }
 
@@ -138,7 +138,7 @@ class Workspace
     {
         foreach ($workspaceSettingsAdminOnlyPages as $page) {
             if (isset($workspaceSettingsAdminOnlyPages)) {
-                DB::table('clockify_workspace_admin_only_pages')->insert(['workspaceId' => $workspaceId, 'adminOnlyPages' => $page]);
+                DB::table('workspace_admin_only_pages')->insert(['workspaceId' => $workspaceId, 'adminOnlyPages' => $page]);
             }
         }
     }
@@ -152,7 +152,7 @@ class Workspace
             if (!isset($workSpace['featureSubscriptionType'])) {
                 $workSpace['featureSubscriptionType'] = null;
             }
-            DB::table('clockify_workspaces')->insert($workSpace);
+            DB::table('workspaces')->insert($workSpace);
         }
     }
 }
