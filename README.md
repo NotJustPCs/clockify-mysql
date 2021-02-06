@@ -6,7 +6,7 @@ Written by @i1yaz
 Comissioned by @foshdafosh
 
 ## Installation:
-* Run composer update
+* Run 'composer update'
 * Edit config.ini as appropriate
 * Add webhooks to Clockify
 ### Webhook examples
