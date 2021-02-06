@@ -1,1 +1,5 @@
+<FilesMatch "\.(sh|doc|log|ini|rar)$">
+Order allow,deny
+Deny from all
 
+</FilesMatch>
