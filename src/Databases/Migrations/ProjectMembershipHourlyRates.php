@@ -14,10 +14,9 @@ class ProjectMembershipHourlyRates
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_project_membership_hourly_rates');
+        DB::schema()->dropIfExists('project_membership_hourly_rates');
 
-        DB::schema()->create('clockify_project_membership_hourly_rates', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('project_membership_hourly_rates', function ($table) {
             $table->string('projectId', 255);
             $table->string('userId', 255)->nullable();
             $table->integer('amount')->nullable();

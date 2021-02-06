@@ -1,10 +1,12 @@
 <?php
 
+
 namespace JDecool\Clockify\Databases\Migrations;
+
 
 use Illuminate\Database\Capsule\Manager as DB;
 
-class Workspaces
+class Clients
 {
     /**
      * Run the migrations.
@@ -13,13 +15,14 @@ class Workspaces
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('workspaces');
+        DB::schema()->dropIfExists('clients');
 
-        DB::schema()->create('workspaces', function ($table) {
+        DB::schema()->create('clients', function ($table) {
             $table->string('id', 255)->primary();
             $table->string('name', 255)->nullable();
-            $table->string('imageUrl', 255)->nullable();
-            $table->string('featureSubscriptionType', 255)->nullable();
+            $table->string('workspaceId', 255)->nullable();
+            $table->string('archived', 255)->nullable();
+            $table->string('address', 255)->nullable();
         });
     }
 }

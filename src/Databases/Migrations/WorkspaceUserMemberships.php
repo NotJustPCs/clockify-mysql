@@ -14,10 +14,9 @@ class WorkspaceUserMemberships
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_user_memberships');
+        DB::schema()->dropIfExists('workspace_user_memberships');
 
-        DB::schema()->create('clockify_workspace_user_memberships', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_user_memberships', function ($table) {
             $table->string('workspaceId', 255);
             $table->string('userId', 255)->nullable();
             $table->string('costRate', 255)->nullable();

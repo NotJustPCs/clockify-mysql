@@ -62,7 +62,7 @@ class Tag
     public function storeTag($tag)
     {
         if (isset($tag)) {
-            DB::table('clockify_tags')->insert($tag);
+            DB::table('tags')->insert($tag);
         }
     }
 }

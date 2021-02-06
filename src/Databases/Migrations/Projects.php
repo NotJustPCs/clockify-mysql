@@ -14,10 +14,9 @@ class Projects
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_projects');
+        DB::schema()->dropIfExists('projects');
 
-        DB::schema()->create('clockify_projects', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('projects', function ($table) {
             $table->string('id', 255)->primary();
             $table->string('name', 255)->nullable();
             $table->string('workspaceId', 255)->nullable();

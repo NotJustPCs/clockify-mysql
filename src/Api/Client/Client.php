@@ -9,6 +9,7 @@ use JDecool\Clockify\{
     Exception\ClockifyException,
     Model\ClientDto
 };
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Client
 {
@@ -35,15 +36,15 @@ class Client
         if (isset($params['page-size']) && (!is_int($params['page-size']) || $params['page-size'] < 1)) {
             throw new ClockifyException('Invalid "page-size" parameter');
         }
+        $clientIds = [];
+        $clients = $this->http->get("/workspaces/$workspaceId/clients", $params);
 
-        $data = $this->http->get("/workspaces/$workspaceId/clients", $params);
-
-        return array_map(
-            static function(array $client): ClientDto {
-                return ClientDto::fromArray($client);
-            },
-            $data
-        );
+        foreach ($clients as $client) {
+            array_push($clientIds, $client['id']);
+            //Store workspace Tags
+            $this->storeClient($client);
+        }
+        return $clientIds;
     }
 
     public function create(string $workspaceId, ClientRequest $request): ClientDto
@@ -51,5 +52,14 @@ class Client
         $data = $this->http->post("/workspaces/$workspaceId/clients", $request->toArray());
 
         return ClientDto::fromArray($data);
+    }
+    /**
+     * @param $client
+     */
+    public function storeClient($client)
+    {
+        if (isset($client)) {
+            DB::table('clients')->insert($client);
+        }
     }
 }

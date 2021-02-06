@@ -1,6 +1,8 @@
 /vendor
 /.php_cs.cache
 /.phpunit.result.cache
-/composer.lock
 /.idea
 /.vscode
+/composer.lock
+/config.ini
+/files

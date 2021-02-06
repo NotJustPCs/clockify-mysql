@@ -13,10 +13,9 @@ class WorkspaceSettingsRounds
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_settings_rounds');
+        DB::schema()->dropIfExists('workspace_settings_rounds');
 
-        DB::schema()->create('clockify_workspace_settings_rounds', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_settings_rounds', function ($table) {
             $table->string('workspaceId', 255);
             $table->string('round', 255)->nullable();
             $table->integer('minutes')->nullable();

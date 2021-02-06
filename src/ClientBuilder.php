@@ -95,9 +95,9 @@ class ClientBuilder
             'username'  => $config['db_user'],
             'password'  => $config['db_password'],
             'engine'    => $config['db_engine'],
-            'charset'   => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => $config['db_prefix']
+            'charset'   => $config['db_charset'],
+            'collation' => $config['db_collation'],
+            'prefix'    => $config['db_prefix'],
         ]);
         $capsule->setEventDispatcher(new Dispatcher(new Container));
 

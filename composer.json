@@ -16,6 +16,7 @@
         "http-interop/http-factory-guzzle": "^1.0",
         "illuminate/database": "^8.20",
         "illuminate/events": "^8.20",
+        "monolog/monolog": "^2.2",
         "myclabs/php-enum": "^1.7",
         "php-http/client-common": "^2.3",
         "php-http/discovery": "^1.12",

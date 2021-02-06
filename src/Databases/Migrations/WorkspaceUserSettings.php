@@ -14,10 +14,9 @@ class WorkspaceUserSettings
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_workspace_user_settings');
+        DB::schema()->dropIfExists('workspace_user_settings');
 
-        DB::schema()->create('clockify_workspace_user_settings', function ($table) {
-            $table->engine = $config['db_engine'];
+        DB::schema()->create('workspace_user_settings', function ($table) {
             $table->string('workspaceId', 255);
             $table->string('userId', 255);
             $table->string('weekStart', 255)->nullable();

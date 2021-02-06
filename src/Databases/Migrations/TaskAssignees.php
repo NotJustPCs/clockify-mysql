@@ -14,12 +14,10 @@ class TaskAssignees
      */
     public static function up()
     {
-        DB::schema()->dropIfExists('clockify_task_assignees');
+        DB::schema()->dropIfExists('task_assignees');
 
-        DB::schema()->create('clockify_task_assignees', function ($table) {
-            $table->engine = $config['db_engine'];
-            $table->string('workspaceId', 255);
-            $table->string('projectId', 255)->nullable();
+        DB::schema()->create('task_assignees', function ($table) {
+            $table->string('taskId', 255);
             $table->string('assigneeId', 255)->nullable();
         });
     }
