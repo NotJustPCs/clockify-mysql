@@ -52,14 +52,16 @@ class TimeEntry
     public function storeWorkspaceProjectTimeEntryTagIds($workspaceId, $userId, $projectId, $timeEntryId, $tagIds)
     {
         if (isset($tagIds)) {
-            foreach ($tagIds as $tagId) {
-                if (isset($tagId)) {
-                    $data['workspaceId'] = $workspaceId;
-                    $data['userId'] = $userId;
-                    $data['projectId'] = $projectId;
-                    $data['timeEntryId'] = $timeEntryId;
-                    $data['tagId'] = $tagId;
-                    DB::table('time_entry_tags')->updateOrInsert($data);
+            if (is_array($tagIds) || is_object($tagIds)) {
+                foreach ($tagIds as $tagId) {
+                    if (isset($tagId)) {
+                        $data['workspaceId'] = $workspaceId;
+                        $data['userId'] = $userId;
+                        $data['projectId'] = $projectId;
+                        $data['timeEntryId'] = $timeEntryId;
+                        $data['tagId'] = $tagId;
+                        DB::table('time_entry_tags')->updateOrInsert($data);
+                    }
                 }
             }
         }

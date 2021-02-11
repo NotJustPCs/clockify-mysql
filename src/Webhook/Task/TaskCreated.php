@@ -20,9 +20,11 @@ class TaskCreated
 
     public function storeTaskAssigneeIds($taskId, $assigneeIds)
     {
-        foreach ($assigneeIds as $assigneeId) {
-            if (isset($assigneeId)) {
-                DB::table('task_assignees')->insert(['taskId' => $taskId, 'assigneeId' => $assigneeId]);
+        if (is_array($assigneeIds) || is_object($assigneeIds)) {
+            foreach ($assigneeIds as $assigneeId) {
+                if (isset($assigneeId)) {
+                    DB::table('task_assignees')->insert(['taskId' => $taskId, 'assigneeId' => $assigneeId]);
+                }
             }
         }
     }
