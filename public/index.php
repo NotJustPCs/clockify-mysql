@@ -12,7 +12,7 @@ use JDecool\Clockify\Webhook\TimeEntry\Timer;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 $config = parse_ini_file('config.ini');
 // create a log channel
 $log = new Logger('Dev');
