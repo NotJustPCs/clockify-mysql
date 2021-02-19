@@ -85,7 +85,7 @@ class ClientBuilder
             $this->requestFactory,
             $this->streamFactory
         );
-        $config = parse_ini_file('config.ini');
+        $config = parse_ini_file(__DIR__ . '/../config.ini');
         $capsule = new Capsule;
 
         $capsule->addConnection([
