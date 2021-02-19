@@ -13,7 +13,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 require __DIR__ . '/../vendor/autoload.php';
-$config = parse_ini_file('/config.ini');
+$config = parse_ini_file(__DIR__ . '/../config.ini');
 // create a log channel
 $log = new Logger('Dev');
 $log->pushHandler(new StreamHandler('/../logger.log', Logger::WARNING));
