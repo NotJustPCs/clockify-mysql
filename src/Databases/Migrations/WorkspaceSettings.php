@@ -28,7 +28,6 @@ class WorkspaceSettings
             $table->boolean('canSeeTimeSheet')->nullable();
             $table->boolean('canSeeTracker')->nullable();
             $table->boolean('projectPickerSpecialFilter')->nullable();
-            $table->boolean('projectPickerTaskFilter')->nullable();
             $table->boolean('forceProjects')->nullable();
             $table->boolean('forceTasks')->nullable();
             $table->boolean('forceTags')->nullable();
