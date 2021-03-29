@@ -24,6 +24,7 @@ class WorkspaceSettingsDto
     private $projectFavorites;
     private $projectGroupingLabel;
     private $projectPickerSpecialFilter;
+    private $projectPickerTaskFilter;
     private $round;
     private $timeRoundingInReports;
     private $trackTimeDownToSecond;
@@ -54,6 +55,7 @@ class WorkspaceSettingsDto
             $data['projectFavorites'],
             $data['projectGroupingLabel'],
             $data['projectPickerSpecialFilter'],
+            $data['projectPickerTaskFilter'],
             Round::fromArray($data['round']),
             $data['timeRoundingInReports'],
             $data['trackTimeDownToSecond']
@@ -82,6 +84,7 @@ class WorkspaceSettingsDto
         bool $projectFavorites,
         string $projectGroupingLabel,
         bool $projectPickerSpecialFilter,
+        bool $projectPickerTaskFilter,
         Round $round,
         bool $timeRoundingInReports,
         bool $trackTimeDownToSecond
@@ -104,6 +107,7 @@ class WorkspaceSettingsDto
         $this->projectFavorites = $projectFavorites;
         $this->projectGroupingLabel = $projectGroupingLabel;
         $this->projectPickerSpecialFilter = $projectPickerSpecialFilter;
+        $this->projectPickerTaskFilter = $projectPickerTaskFilter;
         $this->round = $round;
         $this->timeRoundingInReports = $timeRoundingInReports;
         $this->trackTimeDownToSecond = $trackTimeDownToSecond;
@@ -200,6 +204,16 @@ class WorkspaceSettingsDto
     public function projectPickerSpecialFilter(): bool
     {
         return $this->projectPickerSpecialFilter;
+    }
+
+    public function projectPickerTaskFilter(): bool
+    {
+        return $this->projectPickerTaskFilter;
+    }
+
+    public function projectPickerTaskFilter(): bool
+    {
+        return $this->projectPickerTaskFilter;
     }
 
     public function round(): Round
