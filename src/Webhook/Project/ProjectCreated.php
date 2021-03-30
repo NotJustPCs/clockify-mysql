@@ -1,11 +1,11 @@
 <?php
 
 
-namespace JDecool\Clockify\Webhook\TimeEntry;
+namespace JDecool\Clockify\Webhook\Project;
 
 use Illuminate\Database\Capsule\Manager as DB;
 
-class TimeEntry
+class ProjectCreated
 {
     private $time;
     public function __construct($time)

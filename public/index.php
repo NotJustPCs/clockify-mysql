@@ -1,22 +1,22 @@
 <?php
 
+use Monolog\Logger;
 use JDecool\Clockify\ApiFactory;
+use Monolog\Handler\StreamHandler;
 use JDecool\Clockify\ClientBuilder;
-use JDecool\Clockify\Databases\Migrations\Migrations;
-use JDecool\Clockify\Webhook\Client\ClientCreated;
 use JDecool\Clockify\Webhook\Project\ProjectCreated;
 use JDecool\Clockify\Webhook\Tag\TagCreated;
-use JDecool\Clockify\Webhook\Task\TaskCreated;
-use JDecool\Clockify\Webhook\TimeEntry\RemoveTimeEntry;
 use JDecool\Clockify\Webhook\TimeEntry\Timer;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+use JDecool\Clockify\Webhook\Task\TaskCreated;
+use JDecool\Clockify\Webhook\Client\ClientCreated;
+use JDecool\Clockify\Databases\Migrations\Migrations;
+use JDecool\Clockify\Webhook\TimeEntry\RemoveTimeEntry;
 
 require __DIR__ . '/../vendor/autoload.php';
 $config = parse_ini_file(__DIR__ . '/../config.ini');
 // create a log channel
 $log = new Logger('Dev');
-$log->pushHandler(new StreamHandler('/../logger.log', Logger::WARNING));
+$log->pushHandler(new StreamHandler(__DIR__ .'/../logger.log', Logger::WARNING));
 
 $builder = new ClientBuilder();
 $client = $builder->createClientV1($config['api_key']);

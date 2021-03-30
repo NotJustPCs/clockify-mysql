@@ -35,6 +35,7 @@ class WorkspaceUserSettings
             $table->boolean('collapseAllProjectLists')->nullable();
             $table->boolean('groupSimilarEntriesDisabled')->nullable();
             $table->string('myStartOfDay', 255)->nullable();
+            $table->boolean('projectPickerTaskFilter')->nullable();
         });
     }
 }
