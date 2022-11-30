@@ -116,7 +116,7 @@ switch ($url) {
     case $app_url . '/':
         //Run migrations
         Migrations::execute();
-        $params['page-size'] = 100000000;
+        $params['page-size'] = 5000;
         $apiFactory = new ApiFactory($client);
         $workspaceApi = $apiFactory->workspaceApi();
         $workspacesIds = $workspaceApi->workspaces();

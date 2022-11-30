@@ -22,6 +22,7 @@ class ProjectTimeEstimates
             $table->string('type', 255)->nullable();
             $table->string('resetOption', 255)->nullable();
             $table->boolean('active')->nullable();
+			$table->boolean('includeNonBillable')->nullable();
         });
     }
 }
